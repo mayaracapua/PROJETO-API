@@ -5,7 +5,13 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node server.js"
+    "start": "node src/server.js",
+    "db:up": "docker start projeto-api || docker run -d --name projeto-api -p 127.0.0.1:27017:27017 -v projeto-api-data:/data/db mongo:8",
+    "db:down": "docker stop projeto-api",
+    "db:logs": "docker logs -f projeto-api",
+    "db:reset": "docker rm -f projeto-api; docker volume rm projeto-api-data",
+    "predev": "npm run db:up",
+    "dev": "node --watch src/server.js"
   },
   "dependencies": {
     "express": "^5.3.0"
