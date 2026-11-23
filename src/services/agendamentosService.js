@@ -1,14 +1,16 @@
-import { agendamentos } from "../models/dados.js";
+import * as model from '../models/agendamentos.model.js'
 
-export function listar() {
+export async function listar() {
 
-    return agendamentos;
+    const documentos = await model.buscarTodas();
+    return documentos;
 
 }
 
-export function buscarPorId(id) {
+export async function buscarPorId(id) {
 
-    return agendamentos.find(a => a.id == id);
+    const documento = await model.buscarPorId()
+    return documento;
 
 }
 

@@ -1,8 +1,8 @@
 import * as agendamentoService from "../services/agendamentosService.js";
 
-export function listar(req, res) {
+export async function listar(req, res) {
 
-    res.json(agendamentoService.listar());
+    res.json(await agendamentoService.listar());
 
 }
 
